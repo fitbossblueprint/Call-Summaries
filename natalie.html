@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strategy Call Recap | Prism Fitness and Performance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Darker+Grotesque:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --gold:#D2B975;
+    --gold-deep:#B89A52;
+    --ink:#0F0F0F;
+    --ink-soft:#1B1B1B;
+    --cream:#F6F6F3;
+    --paper:#FCFCFA;
+    --line:#E4E1D8;
+    --muted:#6B6A63;
+    --text:#23231F;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--cream);
+    color:var(--text);
+    font-family:'Archivo',system-ui,-apple-system,sans-serif;
+    font-weight:500;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:780px;margin:0 auto;padding:0 22px}
+
+  /* HERO */
+  .hero{
+    background:var(--ink);
+    color:var(--cream);
+    padding:64px 0 56px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  }
+  .hero-glow{
+    position:absolute;top:-140px;right:-120px;width:360px;height:360px;
+    background:radial-gradient(circle,rgba(210,185,117,0.22),transparent 70%);
+    pointer-events:none;
+  }
+  .eyebrow{
+    font-family:'Darker Grotesque',sans-serif;
+    font-weight:700;font-size:15px;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--gold);
+  }
+  .hero .eyebrow{margin-bottom:18px}
+  .hero h1{
+    font-family:'Archivo',sans-serif;font-weight:900;
+    font-size:clamp(32px,7vw,52px);line-height:1.02;letter-spacing:-.015em;
+    color:var(--cream);
+  }
+  .hero h1 span{color:var(--gold)}
+  .hero-meta{
+    margin-top:26px;display:flex;flex-wrap:wrap;gap:10px 28px;
+    font-family:'Darker Grotesque',sans-serif;font-weight:600;
+    font-size:19px;color:#C9C7BE;
+  }
+  .hero-meta b{color:var(--cream);font-weight:700}
+  .next-step{
+    margin-top:26px;font-family:'Darker Grotesque',sans-serif;font-weight:600;
+    font-size:23px;line-height:1.35;color:var(--cream);
+  }
+  .next-step b{font-weight:800;color:var(--cream)}
+  .hero-ps{
+    margin-top:16px;font-family:'Darker Grotesque',sans-serif;font-weight:600;
+    font-size:18px;line-height:1.4;color:var(--cream);
+  }
+
+  /* SECTIONS */
+  main{padding:18px 0 40px}
+  section{padding:42px 0;border-bottom:1px solid var(--line)}
+  section:last-of-type{border-bottom:none}
+  .num{
+    font-family:'Darker Grotesque',sans-serif;font-weight:800;
+    font-size:15px;letter-spacing:.3em;color:var(--gold-deep);text-transform:uppercase;
+    display:block;margin-bottom:10px;
+  }
+  h2{
+    font-family:'Archivo',sans-serif;font-weight:900;
+    font-size:clamp(23px,4.2vw,30px);line-height:1.1;letter-spacing:-.01em;
+    color:var(--ink);margin-bottom:18px;
+  }
+  h2 .sub{
+    display:block;font-family:'Darker Grotesque',sans-serif;font-weight:600;
+    font-size:18px;letter-spacing:0;color:var(--muted);margin-top:8px;line-height:1.3;
+  }
+  h3{
+    font-family:'Archivo',sans-serif;font-weight:700;
+    font-size:18px;color:var(--ink);margin:24px 0 8px;
+  }
+  p{margin-bottom:14px;font-size:16.5px}
+  p:last-child{margin-bottom:0}
+  .lead{font-size:18px;color:#33332D}
+  .doc-link{color:var(--gold-deep);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+  .doc-link:hover{color:var(--ink)}
+  .hi{font-size:19px;color:var(--ink);font-weight:700;margin-bottom:16px}
+
+  ul{list-style:none;margin:6px 0 4px}
+  ul li{
+    position:relative;padding-left:26px;margin-bottom:11px;font-size:16.5px;
+  }
+  ul li::before{
+    content:"";position:absolute;left:0;top:11px;width:9px;height:9px;
+    background:var(--gold);transform:rotate(45deg);
+  }
+  ul li b{color:var(--ink);font-weight:700}
+
+  /* CARDS */
+  .card{
+    background:var(--paper);border:1px solid var(--line);border-radius:14px;
+    padding:22px 24px;margin:14px 0;
+  }
+  .card h3{margin-top:0}
+  .card .why{color:var(--muted);font-size:15px}
+
+  .change{
+    border-left:3px solid var(--gold);padding:4px 0 4px 20px;margin:22px 0;
+  }
+  .change .what{font-weight:700;color:var(--ink);font-size:17px;margin-bottom:6px}
+  .change p{margin-bottom:10px}
+  .change ul{margin:8px 0 10px}
+  .change ul li{margin-bottom:7px;font-size:16px}
+  .change .why-line{font-size:15.5px;color:var(--muted)}
+  .change .why-line b{color:var(--ink);font-weight:800}
+
+  .quote{
+    font-style:italic;color:#44443D;border-left:2px solid var(--line);
+    padding-left:16px;margin:8px 0 4px;font-size:15.5px;
+  }
+
+  /* HOOKS */
+  .hook{
+    background:var(--ink);color:var(--cream);border-radius:12px;
+    padding:18px 22px 18px 22px;margin:12px 0;
+    position:relative;
+  }
+  .hook .stage{
+    font-family:'Darker Grotesque',sans-serif;font-weight:800;
+    font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--gold);display:block;margin-bottom:7px;
+  }
+  .hook .line{
+    font-family:'Archivo',sans-serif;font-weight:500;
+    font-size:17px;line-height:1.45;
+  }
+
+  .tag{
+    display:inline-block;font-family:'Darker Grotesque',sans-serif;font-weight:700;
+    font-size:13px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--gold-deep);background:rgba(210,185,117,.13);
+    padding:3px 10px;border-radius:4px;margin-bottom:10px;
+  }
+
+  /* PROMPT BLOCK (signature) */
+  .prompt-wrap{
+    background:var(--ink);border-radius:18px;overflow:hidden;
+    box-shadow:0 24px 60px -28px rgba(15,15,15,.55);
+    margin-top:8px;
+  }
+  .prompt-top{
+    display:flex;align-items:center;justify-content:space-between;gap:14px;
+    padding:18px 22px;border-bottom:1px solid rgba(210,185,117,.22);
+    flex-wrap:wrap;
+  }
+  .prompt-top .label{
+    font-family:'Darker Grotesque',sans-serif;font-weight:700;
+    color:var(--gold);letter-spacing:.16em;text-transform:uppercase;font-size:16px;
+  }
+  .copy-btn{
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;
+    background:var(--gold);color:var(--ink);border:none;border-radius:9px;
+    padding:11px 20px;cursor:pointer;transition:transform .12s ease,background .2s ease;
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .copy-btn:hover{background:#E0C988}
+  .copy-btn:active{transform:scale(.97)}
+  .copy-btn.done{background:#7FB069;color:#0F0F0F}
+  .copy-btn svg{width:16px;height:16px}
+  .prompt-body{
+    max-height:360px;overflow:auto;padding:20px 22px;
+    font-family:'SF Mono',ui-monospace,'Cascadia Code',Menlo,monospace;
+    font-size:13px;line-height:1.7;color:#D7D5CC;white-space:pre-wrap;
+  }
+  .prompt-body::-webkit-scrollbar{width:10px}
+  .prompt-body::-webkit-scrollbar-thumb{background:#34342E;border-radius:6px}
+  .prompt-hint{
+    font-size:14px;color:var(--muted);margin-top:14px;
+  }
+
+  /* FOOTER */
+  footer{
+    background:var(--ink);text-align:center;padding:40px 22px;
+  }
+  footer .mark{
+    font-family:'Archivo',sans-serif;font-weight:900;font-size:22px;
+    color:var(--cream);letter-spacing:-.01em;
+  }
+  footer .mark sup{font-size:11px;font-weight:700;top:-.8em}
+  footer p{font-size:14px;margin-top:10px;color:#7E7C74}
+
+  @media (max-width:560px){
+    .hero{padding:48px 0 42px}
+    section{padding:34px 0}
+    .prompt-top{flex-direction:column;align-items:flex-start}
+    .copy-btn{width:100%;justify-content:center}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-glow"></div>
+  <div class="wrap">
+    <span class="eyebrow">Strategy Call Recap</span>
+    <h1>Coach Natalie<br><span>Prism Fitness and Performance</span></h1>
+    <div class="next-step"><b>Next step:</b> Roadmap call with Coach Reuben</div>
+    <p class="hero-ps">P.S. I added a goodie for you in section 08.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section>
+    <span class="num">01 · Quick recap</span>
+    <h2>It was great talking with you today, Natalie.</h2>
+    <p>Sending this ahead of your next call with me so you have something to review first. We covered how your income rises and falls with the hours you put in, how summer slows things down while the bills stay the same, and the pressure that puts on you. Below is a quick recap of our call and how Fit Boss will help you build a hybrid business, sell packages instead of hours, and move steadily online so your income holds even when you take time off.</p>
+    <p>Be sure to check out the <a class="doc-link" href="https://fitbossblueprint.com/fitbosscourseprogramoverview" target="_blank" rel="noopener">course and program overview</a>.</p>
+  </section>
+
+  <section>
+    <span class="num">02 · What you're after</span>
+    <h2>Your vision</h2>
+    <ul>
+      <li>Build a <b>hybrid coaching business</b>, in person and online, then shift more of it online over time.</li>
+      <li>Sell <b>packages</b> instead of trading dollars for hours.</li>
+      <li>Reach about <b>$5,000 a week</b> across in person and online, then grow the online side to $7,000 to $10,000.</li>
+      <li>Move lower-maintenance clients online to <b>free up your best hours</b> for higher-quality clients.</li>
+      <li>Turn your dormant Instagram into a <b>steady source of leads</b>.</li>
+      <li>Lock in your niche: <b>driven women 40 to 60</b>, endurance athletes and high achievers who want strength and structure.</li>
+      <li>Win back <b>time and freedom</b> so slow summers and vacations stop cutting your income.</li>
+      <li>Free up room to <b>launch your podcast</b>.</li>
+    </ul>
+  </section>
+
+  <section>
+    <span class="num">03 · The core roadblocks</span>
+    <h2>Main challenges</h2>
+
+    <div class="card">
+      <h3>Income rises and falls with your hours</h3>
+      <p>Your revenue is tied to the hours you work, so summers, vacations, and cancellations cut straight into your income.</p>
+      <p class="quote">"I cannot do this year after year."</p>
+    </div>
+
+    <div class="card">
+      <h3>Your Instagram business page has gone quiet</h3>
+      <p>Prism Fitness and Performance has been dormant for years, so no content is bringing new clients in.</p>
+      <p class="quote">"My page has been dormant for some years, so it needs some revamping."</p>
+    </div>
+
+    <div class="card">
+      <h3>Clients rely on you to show up in person</h3>
+      <p>Most of your in-person clients hired you because they will not train on their own, which keeps you driving across the city.</p>
+      <p class="quote">"They need that person to meet, or they're not going to come."</p>
+    </div>
+
+    <div class="card">
+      <h3>A past online attempt left you cautious</h3>
+      <p>You invested in a rebrand during COVID and saw no return, so a clear, proven plan matters this time.</p>
+      <p class="quote">"For one year I spent 10k, and it got zero return."</p>
+    </div>
+  </section>
+
+  <section>
+    <span class="num">04 · Profile breakdown</span>
+    <h2>Instagram audit</h2>
+    <h3>Profile photo</h3>
+    <p>Your current photo reads more like a headshot than a trainer at work. An action shot with weights or a gym behind you signals a top of the line fitness professional in the first few seconds.</p>
+    <h3>Bio and name</h3>
+    <p>Your name is not on the page anywhere. Adding "Coach Natalie" with "Online Fitness Coach" puts a face on the brand, and saying online raises your perceived value. A direct "I help" statement then tells the right woman she is in the right place.</p>
+    <h3>Content and reels</h3>
+    <p>Everything you post is your marketing. When someone lands on your page they decide in two to three seconds whether to stay. Your content needs to teach and speak to what your ideal client wants, so the right woman sees you as the expert and reaches out.</p>
+  </section>
+
+  <section>
+    <span class="num">05 · Direction</span>
+    <h2>What to change</h2>
+
+    <div class="change">
+      <div class="what">Name and bio</div>
+      <p>Move from a quiet page to a clear profile that names who you help.</p>
+      <ul>
+        <li>Coach Natalie | Online Fitness Coach</li>
+        <li>Add a direct "I help" statement for driven women 40 to 60 who want strength and structure</li>
+      </ul>
+      <div class="why-line"><b>Why:</b> instant clarity on who you help and the result you deliver.</div>
+    </div>
+
+    <div class="change">
+      <div class="what">Profile photo</div>
+      <p>Swap the headshot for an image that shows you as a working trainer.</p>
+      <ul>
+        <li>Action shot with weights or a gym in frame</li>
+        <li>Positioned as a top of the line fitness professional</li>
+      </ul>
+      <div class="why-line"><b>Why:</b> the right client trusts you in the first few seconds.</div>
+    </div>
+
+    <div class="change">
+      <div class="what">Content with a funnel</div>
+      <p>Run a deliberate mix of content so a viewer becomes a client:</p>
+      <ul>
+        <li>Attract</li>
+        <li>Convert</li>
+        <li>Enroll</li>
+      </ul>
+      <div class="why-line"><b>Why:</b> viewer becomes follower becomes lead becomes client.</div>
+    </div>
+
+    <div class="change">
+      <div class="what">Hybrid first, then online</div>
+      <p>Keep the in-person clients you love, move the lower-maintenance ones to an online portal, and sell packages:</p>
+      <ul>
+        <li>Sell packages instead of hourly</li>
+        <li>Shift lower-maintenance clients online</li>
+        <li>Open room for higher-quality clients</li>
+      </ul>
+      <div class="why-line"><b>Why:</b> your income holds steady when you travel or take time off.</div>
+    </div>
+  </section>
+
+  <section>
+    <span class="num">06 · The Blueprint</span>
+    <h2>Strategy preview
+      <span class="sub">Steal these hooks and topics using the prompt in section 08.</span>
+    </h2>
+
+    <h3>Messaging direction</h3>
+    <p><b>Strength for endurance.</b> You're the coach for driven women 40 to 60 who love to train and want to stay strong, fast, and healthy for years, with strength work built around their sport.</p>
+    <p><b>The comeback after injury.</b> You speak to women rebuilding after an injury or surgery and show them a clear, safe path back to full strength.</p>
+    <p><b>The videos are scripted for you.</b> For your first eight weeks, Fit Boss researches what is working in your niche, writes each video word for word, and pairs it with the format to film. You film it, edit it, and post it. The three topics below are examples of what those scripts cover.</p>
+
+    <h3>Content topics</h3>
+    <div class="card">
+      <h3 style="margin-top:0">Strength training for endurance athletes</h3>
+      <p class="why">Endurance athletes often chase more miles and skip the strength work that protects them. This shows why strength is what keeps them racing.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Coming back to training after an injury</h3>
+      <p class="why">Many women pause training after an injury and lose ground. This shows how to rebuild safely instead of starting over.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Building a training structure that fits a full schedule</h3>
+      <p class="why">Driven women with packed schedules run on willpower until it breaks. This shows how a clear structure carries the work when motivation dips.</p>
+    </div>
+
+    <h3>Hook preview</h3>
+    <span class="tag">Steal these hooks with the prompt in section 08</span>
+    <div class="hook">
+      <span class="stage">Attract</span>
+      <div class="line">I have been a (occupation) for (time) and I am exposing everything the (industry) keeps from you.</div>
+      <div style="margin-top:8px;font-size:14px;font-family:'Darker Grotesque',sans-serif;font-weight:600;color:#C9C7BE">Example: I have been a personal trainer for 26 years and I am exposing everything the fitness industry keeps from you.</div>
+    </div>
+    <div class="hook">
+      <span class="stage">Convert</span>
+      <div class="line">If you're (age range), these are the (number) things you need to do so you don't end up (pain point) by (age).</div>
+      <div style="margin-top:8px;font-size:14px;font-family:'Darker Grotesque',sans-serif;font-weight:600;color:#C9C7BE">Example: If you're a woman in your 40s or 50s, these are the 3 things you need to do so you don't lose your strength by 60.</div>
+    </div>
+    <div class="hook">
+      <span class="stage">Enroll</span>
+      <div class="line">Over the past (time) my client went from (before) to (after).</div>
+      <div style="margin-top:8px;font-size:14px;font-family:'Darker Grotesque',sans-serif;font-weight:600;color:#C9C7BE">Example: Over the past 12 weeks my client went from afraid to load her legs again to lifting heavier than before her injury.</div>
+    </div>
+  </section>
+
+  <section>
+    <span class="num">07 · How the pieces connect</span>
+    <h2>How this connects to what was discussed</h2>
+    <p>The path we discussed moves you from trading hours for dollars to a hybrid business with packages and a steady flow of online leads. Fit Boss gives you the marketing, sales, and management system that sits behind your coaching. You get a customized roadmap and 1:1 strategy calls with Coach Reuben, eight weeks of done-for-you content ideas, hooks, and formats so you film instead of guessing, and the ACE Method to turn Instagram into a source of warm leads.</p>
+    <p>You also get a management system that lets you take on more clients without burning out, keyword and DM funnels that turn followers into conversations, and sales coaching so those conversations become paying clients. This gives you the structure to sell packages, protect your best hours, and keep your income steady through slow summers and vacations.</p>
+  </section>
+
+  <section>
+    <span class="num">08 · Before your next call</span>
+    <h2>Run this in your AI</h2>
+    <p class="lead">Copy the prompt below and paste it into Claude or ChatGPT. Using the context from your call, it builds a focused strategy preview of your business that you can start putting to work today.</p>
+    <p class="lead">It will ask you if you want to do a quick five minute interview (use talk to text then ramble, Claude or ChatGPT will help clean it up) in order to build a Custom Claude Project that knows your business and scripts content that speaks to your ideal client avatar.</p>
+
+    <div class="prompt-wrap">
+      <div class="prompt-top">
+        <span class="label">Your strategy preview prompt</span>
+        <button class="copy-btn" id="copyBtn" onclick="copyPrompt()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span id="copyLabel">Copy prompt</span>
+        </button>
+      </div>
+      <pre class="prompt-body" id="promptText"></pre>
+    </div>
+    <p class="prompt-hint">One tap copies the full prompt. Paste it into a new chat and let it build your preview.</p>
+  </section>
+
+  <section>
+    <span class="num">09 · Come ready to talk through</span>
+    <h2>What to discuss next</h2>
+    <ul>
+      <li>Which client you most want to build your online business around first.</li>
+      <li>How to lock your niche: driven women 40 to 60, endurance athletes, and the comeback after injury.</li>
+      <li>How to package your in-person and online offers and price them.</li>
+      <li>How to move lower-maintenance clients online without losing the ones you love.</li>
+      <li>How Instagram should run as your main lead source.</li>
+      <li>Your single first priority for the next 90 days.</li>
+      <li>What support you need to stay consistent while you keep coaching full days.</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <div class="mark">The Fit Boss Blueprint<sup>&trade;</sup></div>
+</footer>
+
+<script>
+  const PROMPT = `I want you to act as my online fitness business strategy assistant.
+
+I had a strategy call about growing my online fitness coaching business. Below is my call recap, goals, challenges, Instagram audit notes, and the solution that was discussed. Use it to make everything specific to me.
+
+RULES FOR YOUR OUTPUT:
+- When you describe how my coaching or program helps me, use definitive language. Do not use should, could, would, might, potentially, possibly, or maybe. Speak with certainty.
+- Name my niche and audience plainly, but never tell me or my audience that they ARE a life stage or life situation. Name who I help by their situation, but do not assign that identity to the reader. For example, name a life stage or circumstance without writing "you are [that]." This applies to any life situation such as a life stage, divorce, single parenthood, or loss.
+- Keep the tone clear, direct, and practical.
+
+Here is my current situation:
+
+I am a personal trainer with 26 years of experience in San Diego, based out of Point Loma Sports Club. I coach about 27 clients in person, through virtual Zoom sessions, and in their homes across the city. My income runs between $2,500 and $3,500 a week and drops in the summer when clients travel. My business is Prism Fitness and Performance, and my Instagram business page has been dormant for years. I tried going online during COVID and spent $10,000 on a rebrand with no return. I am an Ironman triathlete, I coach endurance athletes, and I had a hip replacement last year. I want to build a hybrid business and move more of it online so my income does not depend on the hours I work.
+
+Here are my main goals:
+
+Build a hybrid coaching business and shift more of it online over time. Sell packages instead of trading dollars for hours. Reach about $5,000 a week across in person and online, then grow the online side to $7,000 to $10,000. Move lower-maintenance clients online to free up my best hours for higher-quality clients. Turn my Instagram into a steady source of leads. Commit to my niche of driven women 40 to 60, endurance athletes and high achievers who want strength and structure. Win back time and freedom so slow summers and vacations stop cutting my income, and free up room to launch my podcast.
+
+Here are the main challenges I mentioned:
+
+My income rises and falls with the hours I work, so summers and vacations cut into it. My Instagram business page has been dormant for years, so nothing is bringing new clients in. Most of my in-person clients hired me because they will not train on their own, which keeps me driving across the city. A past online attempt cost me $10,000 with no return, so I want a proven plan this time. I have not set a specific income goal yet because it gets overwhelming.
+
+Here is my Instagram audit summary:
+
+My profile photo reads like a headshot instead of showing me as a working trainer, so it needs an action shot with weights or a gym in frame. My name is not on the page, so it needs my name and Coach with Online Fitness Coach. My bio needs a direct 'I help' statement for the woman I want to reach. Everything I post is my marketing, and people decide in two to three seconds whether to stay, so my content needs to teach and speak to what my ideal client wants. Instagram is my main marketing channel.
+
+Here are the main gaps that were identified:
+
+My page does not communicate who I help or the result I deliver. My content has no clear attract, convert, and enroll structure. I have not committed to one niche for my online business. I am still trading hours for dollars instead of selling packages. I do not have a system that moves someone from a follow or a comment into a DM conversation and then a call.
+
+Here is the solution that was discussed:
+
+Work with Coach Reuben for 1:1 strategy calls and a roadmap customized to my business. Become a hybrid coach first, move my lower-maintenance clients to an online portal, and sell packages instead of hours. Use the ACE Method to turn Instagram into a steady source of warm leads. Get eight weeks of done-for-you content ideas, hooks, and formats so I film instead of guessing. Onboard an AI Employee with the Buyer Psychology System so my content is built around my ideal client. Set up keyword and DM funnels that turn followers into conversations, get sales coaching for my DMs and calls, and use a management system so I can take on more clients without burning out.
+
+Now create the following:
+
+# Strategy Preview
+
+## 1. Where I Am Right Now
+Summarize my current situation in simple language.
+
+## 2. The Biggest Gap
+Explain the biggest gap between where I am now and where I want to go.
+
+## 3. Messaging Direction
+Give me 1 to 2 possible messaging directions based on my niche, goals, challenges, and Instagram audit. Keep this focused and practical.
+
+## 4. Content Topic Preview
+Return these three topics exactly as written below. Do not generate different ones. For each, keep the title, then add one line on why it matters and one line on the problem it helps my audience understand.
+- Strength training for endurance athletes
+- Coming back to training after an injury
+- Building a training structure that fits a full schedule
+
+## 5. Hook Preview
+Return these three hooks exactly as written below, with their stage labels. Do not generate different ones.
+- (Attract) I have been a (occupation) for (time) and I am exposing everything the (industry) keeps from you.
+- (Convert) If you're (age range), these are the (number) things you need to do so you don't end up (pain point) by (age).
+- (Enroll) Over the past (time) my client went from (before) to (after).
+
+## 6. What This Could Become
+Explain how these pieces connect into a clearer Instagram profile, stronger content, better conversations, and more qualified leads. Keep it simple and practical.
+
+## 7. What I Need Help Clarifying
+Give me 5 to 7 questions to think through across my niche, offer, ideal client, content, lead flow, sales process, and next best move.
+
+## 8. What to Focus On First
+Give me 3 high-level priorities that create the most clarity and momentum based on everything above.
+
+Keep the tone clear, helpful, and practical.
+
+Before you finish, offer the next step.
+
+After you have delivered the full Strategy Preview above, say this to me, in your own warm tone:
+
+"I can take this one step further. If you want, I can interview you to map out your ideal business and your ideal client, then build you a set of files you can drop straight into a custom Claude project. That project becomes a business brain that knows your goals, your voice, and your client. From then on, everything you make with AI sounds like you and speaks to your ideal client avatar. Want to do it?"
+
+If I say no, leave it there warmly and stop.
+
+If I say yes, do not start the questions yet. First tell me this:
+
+"Quick tip before we start. Use your phone or computer's talk-to-text and just speak your answers out loud, the way you would on our call. Do not worry about being polished or organized, ramble if you want, and I will clean it up and pull out what matters. Typed, this takes about 15 to 20 minutes. Spoken, it takes about 5.
+
+Do you have about 5 to 10 minutes right now? If you do, we will start. If not, come back to this same conversation when you do, tell me you are ready, and we will pick up right here."
+
+Wait for me to confirm I have the time. Only begin once I say yes.
+
+Why this is worth your time:
+- The problem: most coaches use AI tools that know nothing about them, so the output is generic and speaks to no one.
+- What this does: it captures your goals, your voice, and your ideal client in three files built for a Claude project.
+- What you get: every caption, script, and message you make after this sounds like you and lands with your ideal client, and you never start from a blank page again.
+
+How to run the interview:
+Ask the questions below in order, grouped by section. Ask conversationally, a few at a time, and wait for my answers before moving to the next section. My answers may come in as spoken, dictated text, so they can be long, messy, or jump around. That is expected. Do not ask me to rewrite or reorganize anything, and do not make me repeat myself. Reflow what I say, keep what matters, and move on. If an answer is thin, ask one natural follow-up, then keep going. Keep it warm and easy. Do not dump every question at once, do not rush me, and do not name any technique or framework while you do this.
+
+SECTION 1: YOUR IDEAL CLIENT
+- Describe the one client you most want to work with. Who are they, what is their life stage, and what is going on in their world?
+- Do you have an "I help" statement already? If you do, paste it here exactly as you use it. If you do not, no problem, just say so and I will help shape one from your answers.
+- In their own words, what do they say they want, and what do they say is wrong?
+- What does their life look like after working with you?
+
+SECTION 2: YOUR IDEAL LIFE
+- If this business works exactly the way you want, what does an average day look like a year from now?
+- What are you doing more of, and less of?
+- What does real freedom with your time actually look like for you?
+
+SECTION 3: WHAT IT MEANS TO YOU
+- When you hit your income goal, what does that money actually let you do that you cannot do right now?
+- Where does that drive come from for you?
+- Who else does this change for, besides you?
+
+SECTION 4: WHO YOU BECOME
+- Who do you become if you build this the way you want?
+- What changes for you when you know exactly how to get clients instead of guessing?
+- How is that version of you different from the one piecing it together right now?
+
+SECTION 5: YOUR EXPERIENCE AND PROOF
+- How long have you been coaching, and what is your story or background as a coach?
+- What results have your clients gotten? Share any wins, transformations, or numbers you are proud of.
+- Do you have testimonials or reviews? Paste any you have, or tell me what clients say about working with you.
+
+SECTION 6: YOUR VOICE
+- When you talk to your clients, how would you describe the way you sound?
+- What words or phrases do you use a lot, and which ones do you never want to use?
+- Name a coach or creator whose voice you admire, and what you like about it.
+
+When you have my answers, ask me one more thing:
+
+"Last thing before I build everything. What is your business name?"
+
+Wait for my answer. Then create three downloadable markdown files I can save and upload, named exactly as below. If you cannot create downloadable files in this tool, fall back to one clean copyable code block per file instead:
+
+1. business-brain.md
+   My goals, my ideal life and the deeper why behind it, who I become when this works, my coaching background and experience, the results my clients have gotten, and any testimonials or proof.
+
+2. brand-voice.md
+   How I sound, the words and phrases I use, what I avoid, and the personality and tone my content carries every time.
+
+3. ideal-client-map.md
+   My ideal client in full: who they are, their life stage, their pains and desires in their own words, what they have tried or believe, their objections, and the transformation they are after.
+
+Use my actual answers. Where an answer was thin, fill the gap sensibly from everything I shared, and mark anything you inferred so I can check it. Name my niche plainly, but never write that I or my audience "are" a life stage or life situation. Speak with certainty about what my coaching does. No filler lines.
+
+After those three, create a fourth downloadable markdown file named project-instructions.md (same fallback to a code block if needed), with my business name filled in:
+
+You are my content and marketing assistant for [my business name]. This project holds three files: my business brain, my brand voice, and my ideal client map. Use them as your source of truth in everything you make.
+- Write in the voice described in my brand voice file. Use the words and phrases I use, and avoid the ones I do not.
+- Aim every piece of content at the ideal client in my client map, and speak to them in the words they use.
+- Keep my goals and my story from the business brain in mind so the work fits where my business is going.
+- Name my niche plainly, but never tell my audience they are a life stage or life situation. Speak to them, do not label them.
+- When you describe what my coaching does, speak with certainty. No hedging and no filler.
+When I ask for content, ask which type and platform if it is not clear, then make it ready to use.
+
+Then, and only then, walk me through setup in plain language:
+
+"Here is how to set this up.
+1. Go to claude.ai, open Projects in the left menu, and click Create project.
+2. Name it [suggest a project name from my business name, for example: My Business Content Engine].
+3. Open the project, find Project knowledge, and upload the three files: business-brain.md, brand-voice.md, and ideal-client-map.md.
+4. Find the custom instructions field and paste in the project-instructions.md text.
+5. That is it. Start a chat inside the project any time you need content, and it already knows your goals, your voice, and your client.
+
+Here is what each file does. The business brain holds your goals, your why, your experience, and your proof, so your AI always has the full picture. The brand voice keeps everything sounding like you. The ideal client map keeps every piece of content aimed at your ideal client. From now on, everything you make inside this project starts from this instead of starting from nothing."`;
+
+  document.getElementById('promptText').textContent = PROMPT;
+
+  function copyPrompt(){
+    const btn = document.getElementById('copyBtn');
+    const label = document.getElementById('copyLabel');
+    const done = () => {
+      btn.classList.add('done');
+      label.textContent = 'Copied';
+      setTimeout(()=>{ btn.classList.remove('done'); label.textContent='Copy prompt'; }, 2200);
+    };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(PROMPT).then(done).catch(fallback);
+    } else { fallback(); }
+    function fallback(){
+      const ta = document.createElement('textarea');
+      ta.value = PROMPT;
+      ta.style.position='fixed'; ta.style.opacity='0';
+      document.body.appendChild(ta); ta.focus(); ta.select();
+      try{ document.execCommand('copy'); done(); }catch(e){}
+      document.body.removeChild(ta);
+    }
+  }
+</script>
+</body>
+</html>
